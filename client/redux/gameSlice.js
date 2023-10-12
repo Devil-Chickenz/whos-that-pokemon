@@ -4,6 +4,7 @@ const initialState = {
   score: 0,
   lives: 3,
   hardmode: false,
+  genChoice: 'all',
   pokemon: {},
 };
 
@@ -23,9 +24,12 @@ export const gameSlice = createSlice({
     setLives: (state, action) => {
       state.lives = action.payload;
     },
+    setGenChoice: (state, action) => {
+      state.genChoice = action.payload;
+    },
   },
 });
 
-export const { setScore, setHardmode, setPokemon, setLives } =
+export const { setScore, setHardmode, setPokemon, setLives, setGenChoice } =
   gameSlice.actions;
 export default gameSlice.reducer;
