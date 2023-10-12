@@ -28,10 +28,10 @@ const LeftSideContainer = (props) => {
     <div id='LeftSideContainer' className='left-side-container'>
       <h2 className='lives'>Lives: {lives}</h2>
       <h2 className='score' data-testid='score'>
-        Your score: {score}
+        Your Score: {score}
       </h2>
       <h2 className='score' data-testid='highscore'>
-        Highscore: {currentUser.highScore}
+        High Score: {currentUser.highScore}
       </h2>
     </div>
   );

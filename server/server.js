@@ -16,6 +16,7 @@ const PORT = 3000;
 //     .status(200)
 //     .sendFile(path.resolve(__dirname, '../public/index.html'));
 // });
+
 //set up the router here for '/
 app.use('/pokemon', apiRouter);
 

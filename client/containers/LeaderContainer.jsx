@@ -21,11 +21,13 @@ const LeaderContainer = ({ leadersList }) => {
     <div className='leaderContainer'>
       <table>
         <thead>
-          <th>Ranking</th>
-          <th>Username</th>
-          <th>High Score</th>
+          <tr>
+            <th>Ranking</th>
+            <th>Username</th>
+            <th>High Score</th>
+          </tr>
         </thead>
-        {leaders}
+        <tbody>{leaders}</tbody>
       </table>
     </div>
   );

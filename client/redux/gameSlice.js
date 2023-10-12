@@ -5,6 +5,7 @@ const initialState = {
   lives: 3,
   hardmode: false,
   genChoice: 'all',
+  result: '',
   pokemon: {},
 };
 
@@ -26,6 +27,9 @@ export const gameSlice = createSlice({
     },
     setGenChoice: (state, action) => {
       state.genChoice = action.payload;
+    },
+    setResult: (state, action) => {
+      state.result = action.payload;
     },
   },
 });
