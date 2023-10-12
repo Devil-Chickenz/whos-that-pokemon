@@ -47,9 +47,9 @@ const RightSideContainer = () => {
           checked={hardmode === true}
           onChange={toggleHardmode}
         />
-        Hardmode
+        Hard Mode
       </div>
-      <label>Choose a Generation:</label>
+      <label>Choose a Pokemon Game:</label>
       <select
         name='genChoice'
         id='generation'
@@ -66,13 +66,13 @@ const RightSideContainer = () => {
         <option value='ruby'>Ruby</option>
         <option value='sapphire'>Sapphire</option>
         <option value='emerald'>Emerald</option>
-        <option value='firered'>Firered</option>
-        <option value='leafgreen'>Leafgreen</option>
+        <option value='firered'>Fire Red</option>
+        <option value='leafgreen'>Leaf Green</option>
         <option value='diamond'>Diamond</option>
         <option value='pearl'>Pearl</option>
         <option value='platinum'>Platinum</option>
-        <option value='heartgold'>Heartgold</option>
-        <option value='soulsilver'>Soulsilver</option>
+        <option value='heartgold'>Heart Gold</option>
+        <option value='soulsilver'>Soul Silver</option>
         <option value='black'>Black</option>
         <option value='white'>White</option>
         <option value='black-2'>Black-2</option>

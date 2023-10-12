@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setScore, setPokemon, setLives } from '../redux/gameSlice';
+import { setScore, setPokemon, setLives, setResult } from '../redux/gameSlice';
 import { setHighScore } from '../redux/userSlice';
 import { Navigate } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ const UserInput = ({ getNewPokemon }) => {
   const pokemon = useSelector((state) => state.game.pokemon);
   const lives = useSelector((state) => state.game.lives);
   const highScore = useSelector((state) => state.user.highScore);
-
+  const result = useSelector((state) => state.game.result);
   // upon user submission, checks to see if submitted answer is correct
   // if correct it will alert and increment score
   // if incorrect it will alert with correct answer
@@ -24,7 +24,7 @@ const UserInput = ({ getNewPokemon }) => {
 
     if (answer.toLowerCase() === pokemon.name) {
       const newScore = score + 1;
-      alert('Correct! Well done!');
+      dispatch(setResult('Correct'));
       // Increment the score and set it in the store
       dispatch(setScore(newScore));
       // check and set high score in state if needed
@@ -36,9 +36,8 @@ const UserInput = ({ getNewPokemon }) => {
       //clear input field
       e.target.reset();
     } else {
-      alert(`Incorrect! The correct answer was ${pokemon.name}.`);
       dispatch(setLives(lives - 1));
-
+      dispatch(setResult('Wrong, you got it wrong'));
       // get new pokemon and set in state
       getNewPokemon();
       e.target.reset();
@@ -53,6 +52,11 @@ const UserInput = ({ getNewPokemon }) => {
     return <div id='startPageNoInput'></div>;
   }
 
+  let hint;
+  if (pokemon.types) {
+    hint = pokemon.types.join(', ');
+  }
+
   // Add the form for user submission when a Pokemon image renders
   return (
     <div>
@@ -65,6 +69,10 @@ const UserInput = ({ getNewPokemon }) => {
         />
         <input id='submitButton' type='submit' value='Submit' />
       </form>
+      <br></br>
+      <div id='result'>{result}</div>
+      <br></br>
+      <div id='hint'>Hint: {hint}</div>
     </div>
   );
 };

@@ -47,7 +47,7 @@ const Leaderboard = () => {
   }, []);
 
   return (
-    <div className='main'>
+    <div className='leaderboard-main'>
       <div className='user-high-score'>
         <h3>Your High Score</h3>
         <p>{currentUser.highScore}</p>

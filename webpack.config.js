@@ -43,7 +43,7 @@ module.exports = {
     }),
   ],
   devServer: {
-    // port: '3000',
+    port: '8080',
     open: true,
     hot: true,
     // liveReload: true,
@@ -54,7 +54,7 @@ module.exports = {
       publicPath: 'build',
     },
     proxy: {
-      '/pokemon': 'http://localhost:3000/',
+      '/': 'http://localhost:3000/',
       // '/api/**': ''
       // {
       //     target: 'http://localhost:3000/',

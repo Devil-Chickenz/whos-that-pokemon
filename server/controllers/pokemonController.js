@@ -1,4 +1,5 @@
 const { Pokemon } = require('../models/pokemonModels');
+const { Gen1 } = require('../models/genModels');
 const fetch = require('node-fetch');
 const fs = require('fs');
 
@@ -10,8 +11,8 @@ let pokemonList;
 pokemonController.getPokemon = async (req, res, next) => {
   try {
     const randomPokemon = await Pokemon.aggregate([{ $sample: { size: 1 } }]);
-    const { name, imageURL } = randomPokemon[0];
-    res.locals.randomPokemon = { name: name, imageURL: imageURL };
+    const { name, imageURL, types } = randomPokemon[0];
+    res.locals.randomPokemon = { name: name, imageURL: imageURL, types: types };
     return next();
   } catch (err) {
     return next({
@@ -50,4 +51,24 @@ pokemonController.fetchPokemonData = async (req, res, next) => {
   return pokemonDataList;
 };
 
+pokemonController.fetchGenData = async (req, res, next) => {
+  const response = await fetch('https://pokeapi.co/api/v2/generation/1');
+  const data = await response.json();
+  // console.log('data: ', data);
+  const pokemonList = await data.pokemon_species;
+  console.log(pokemonList);
+
+  const pokemonDataList = [];
+
+  for (const pokemon of pokemonList) {
+    const pokemonDetails = await fetch(pokemon.url).then((res) => res.json());
+    const pokemonData = {
+      name: pokemon.name,
+      // imageURL: pokemonDetails.sprites.other['official-artwork'].front_default,
+      // types: pokemonDetails.types.map((type) => type.type.name),
+    };
+    pokemonDataList.push(pokemonData);
+  }
+  return pokemonDataList;
+};
 module.exports = pokemonController;
