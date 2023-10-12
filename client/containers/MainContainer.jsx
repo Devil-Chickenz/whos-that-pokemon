@@ -24,6 +24,7 @@ const MainContainer = () => {
   const score = useSelector((state) => state.game.score);
   const pokemon = useSelector((state) => state.game.pokemon);
   const hardmode = useSelector((state) => state.game.hardmode);
+  const genChoice = useSelector((state) => state.game.genChoice);
 
   // Fetch new pokemon from the database:
   const getNewPokemon = async () => {
@@ -32,7 +33,8 @@ const MainContainer = () => {
     // result is converted to JSON and then passed through the setter function
     //  - this updates pokemon state with newly-fetched pokemon
     try {
-      const result = await fetch('/pokemon', {
+      const result = await fetch(`/pokemon`, {
+        // add /${genChoice} after pokemon to send to backend
         headers: {
           'Content-Type': 'application/json',
         },

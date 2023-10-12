@@ -1,17 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import Leader from '../components/Leader.jsx';
+import LeaderContainer from '../containers/LeaderContainer.jsx';
 
 const Leaderboard = () => {
   const score = useSelector((state) => state.game.score);
   const currentUser = useSelector((state) => state.user);
-  const leaders = [];
+  const [leadersList, setLeadersList] = useState([]);
 
   //fetch request to get top users (to /pokemon/leaderboard)
   const getLeaderboard = async () => {
     const response = await fetch('/pokemon/leaderboard');
-    const leaderList = await response.json();
-    console.log('leaderlist', leaderList);
+    const leaders = await response.json();
+    setLeadersList(leaders);
   };
 
   let DBScore;
@@ -46,14 +46,6 @@ const Leaderboard = () => {
     getDBScore();
   }, []);
 
-  //   useEffect(() => {
-  //     for (let leader of leaderList) {
-  //       leaders.push(
-  //         <Leader username={leader.username} highScore={leader.highScore} />
-  //       );
-  //     }
-  //   }, [leaderList]);
-
   return (
     <div className='main'>
       <div className='user-high-score'>
@@ -62,7 +54,7 @@ const Leaderboard = () => {
       </div>
       <div className='leaderboard'>
         <h3>Leaderboard</h3>
-        {/* {leaders} */}
+        <LeaderContainer leadersList={leadersList} />
       </div>
     </div>
   );

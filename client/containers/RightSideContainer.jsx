@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setHardmode } from '../redux/gameSlice';
+import { setGenChoice, setHardmode } from '../redux/gameSlice';
 /*
 
 /////// RIGHT SIDE CONTAINER \\\\\\\
@@ -21,11 +21,17 @@ const RightSideContainer = () => {
   // access state from store
   const hardmode = useSelector((state) => state.game.hardmode);
   const pokemon = useSelector((state) => state.game.pokemon);
+  const genChoice = useSelector((state) => state.game.genChoice);
 
   //This functionality changes the state of Hardmode.
   const toggleHardmode = () => {
     // Dispatch the setHardmode action to update store
     dispatch(setHardmode(!hardmode));
+  };
+
+  // This functionality changes the state of genChoice based on value of select dropdown changing
+  const changeGenChoice = (e) => {
+    dispatch(setGenChoice(e.target.value));
   };
 
   // This condition hides the options until a pokemon is fetched.
@@ -34,8 +40,8 @@ const RightSideContainer = () => {
   // }
 
   return (
-    <div id='RightSideContainer' onChange={toggleHardmode}>
-      <div id='HardmodeButton'>
+    <div id='RightSideContainer'>
+      <div id='HardmodeButton' onChange={toggleHardmode}>
         <input
           type='checkbox'
           checked={hardmode === true}
@@ -43,6 +49,35 @@ const RightSideContainer = () => {
         />
         Hardmode
       </div>
+      <label>Choose a Generation:</label>
+      <select
+        name='genChoice'
+        id='generation'
+        value={genChoice}
+        onChange={changeGenChoice}
+      >
+        <option value='all'>All</option>
+        <option value='red'>Red</option>
+        <option value='blue'>Blue</option>
+        <option value='yellow'>Yellow</option>
+        <option value='gold'>Gold</option>
+        <option value='silver'>Silver</option>
+        <option value='crystal'>Crystal</option>
+        <option value='ruby'>Ruby</option>
+        <option value='sapphire'>Sapphire</option>
+        <option value='emerald'>Emerald</option>
+        <option value='firered'>Firered</option>
+        <option value='leafgreen'>Leafgreen</option>
+        <option value='diamond'>Diamond</option>
+        <option value='pearl'>Pearl</option>
+        <option value='platinum'>Platinum</option>
+        <option value='heartgold'>Heartgold</option>
+        <option value='soulsilver'>Soulsilver</option>
+        <option value='black'>Black</option>
+        <option value='white'>White</option>
+        <option value='black-2'>Black-2</option>
+        <option value='white-2'>White-2</option>
+      </select>
     </div>
   );
 };
