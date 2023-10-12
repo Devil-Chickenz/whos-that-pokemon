@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const Leader = ({ username, highScore }) => {
+const Leader = ({ rank, username, highScore }) => {
   return (
-    <div className='leader'>
-      <p>{username}</p>
-      <p>{highScore}</p>
-    </div>
+    <tr className='leader'>
+      <td>{rank}</td>
+      <td>{username}</td>
+      <td>{highScore}</td>
+    </tr>
   );
 };
 
