@@ -11,6 +11,49 @@ body {
   justify-content: space-between;
 }
 
+.login-form,
+.signup-form {
+  background-image: url('../client/images/login.png');
+  padding: 30px;
+  border: 1px solid #ffcc00;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 300px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.login-form h1,
+.signup-form h1 {
+  font-size: 24px;
+  color: #ff6600; /* Pokémon orange */
+}
+
+input[type='text'],
+input[type='password'] {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input[type='submit'] {
+  width: 50%;
+  padding: 10px;
+  background-color: #ffcc00; /* Pikachu yellow */
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+input[type='submit']:hover {
+  background-color: #ff9900; /* Darker Pikachu yellow on hover */
+}
+
 #pokemonImage {
   background: transparent;
   filter: contrast(0%) brightness(50%);
@@ -70,6 +113,34 @@ body {
   justify-content: center;
 }
 
+.left-side-container {
+  background-color: #ffcc00;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  justify-content: center;
+  max-width: 300px;
+  max-height: 300px;
+  margin: 0 auto;
+  color: #333;
+  font-size: 16px;
+}
+
+.lives {
+  font-size: 36px;
+  font-family: 'Shrikhand';
+  color: rgb(255, 98, 0);
+}
+
+.score,
+.score[data-testid='highscore'] {
+  color: #333;
+  font-size: 36px;
+  font-family: 'Shrikhand';
+}
+
 #HardmodeButton {
   display: flex;
   accent-color: #ffd93b;
@@ -90,11 +161,6 @@ body {
   text-align: center;
   font-family: 'Shrikhand', cursive;
   text-shadow: 5px 5px #558abb;
-}
-
-.score {
-  font-family: 'Shrikhand';
-  font-size: 36px;
 }
 
 p {

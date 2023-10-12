@@ -25,10 +25,10 @@ const LeftSideContainer = (props) => {
   }
 
   return (
-    <div id='LeftSideContainer'>
+    <div id='LeftSideContainer' className='left-side-container'>
       <h2 className='lives'>Lives: {lives}</h2>
       <h2 className='score' data-testid='score'>
-        Score: {score}
+        Your score: {score}
       </h2>
       <h2 className='score' data-testid='highscore'>
         Highscore: {currentUser.highScore}

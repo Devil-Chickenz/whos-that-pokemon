@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
+import Header from '../components/Header.jsx';
 
 const Login = ({ currentUser, setCurrentUser }) => {
   //event handler for login form
@@ -52,31 +53,34 @@ const Login = ({ currentUser, setCurrentUser }) => {
     return <Navigate replace to='/play' />;
   } else {
     return (
-      <div className='main'>
-        <div id='login'>
-          <h1>Login</h1>
-          <form onSubmit={handleLogin}>
-            <input name='username' type='text' placeholder='Username'></input>
-            <input
-              name='password'
-              type='password'
-              placeholder='Password'
-            ></input>
-            <input className='submit' type='submit' value='Login'></input>
-          </form>
-        </div>
+      <div className='login-main'>
+        <Header />
+        <div className='main'>
+          <div id='login' className='login-form'>
+            <h1>Login</h1>
+            <form onSubmit={handleLogin}>
+              <input name='username' type='text' placeholder='Username'></input>
+              <input
+                name='password'
+                type='password'
+                placeholder='Password'
+              ></input>
+              <input className='submit' type='submit' value='Login'></input>
+            </form>
+          </div>
 
-        <div id='signup'>
-          <h1>Signup</h1>
-          <form onSubmit={handleSignup}>
-            <input name='username' type='text' placeholder='Username'></input>
-            <input
-              name='password'
-              type='password'
-              placeholder='Password'
-            ></input>
-            <input className='submit' type='submit' value='Signup'></input>
-          </form>
+          <div id='signup' className='signup-form'>
+            <h1>Signup</h1>
+            <form onSubmit={handleSignup}>
+              <input name='username' type='text' placeholder='Username'></input>
+              <input
+                name='password'
+                type='password'
+                placeholder='Password'
+              ></input>
+              <input className='submit' type='submit' value='Signup'></input>
+            </form>
+          </div>
         </div>
       </div>
     );
