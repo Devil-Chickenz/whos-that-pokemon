@@ -3,6 +3,7 @@ const pokemonController = require('../controllers/pokemonController');
 const userController = require('../controllers/userController');
 const { Pokemon } = require('../models/pokemonModels');
 const cookieController = require('../controllers/cookieController');
+const { Gen1 } = require('../models/genModels');
 
 const router = express.Router();
 router.use(express.json());
@@ -25,8 +26,9 @@ router.post(
   '/login',
   userController.loginUser,
   cookieController.setSSIDCookie,
+  cookieController.startSession,
   (req, res) => {
-    console.log('login response body',res.locals.existingUser);
+    console.log('login response body', res.locals.existingUser);
     return res.status(200).json(res.locals.existingUser);
   }
 );
@@ -54,6 +56,21 @@ router.get('/fetch-and-store-pokemons', async (req, res) => {
     const pokemonDataList = await pokemonController.fetchPokemonData();
     console.log(pokemonDataList);
     await Pokemon.create(pokemonDataList);
+    console.log(`Stored ${pokemonDataList.length} Pokémon in the database.`);
+    res.json({
+      message: `Stored ${pokemonDataList.length} Pokémon in the database.`,
+    });
+  } catch (error) {
+    console.error(`Error fetching/storing data for Pokémon: ${error.message}`);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+router.get('/fetch-and-store-gens', async (req, res) => {
+  try {
+    const pokemonDataList = await pokemonController.fetchGenData();
+    console.log(pokemonDataList);
+    await Gen1.create(pokemonDataList);
     console.log(`Stored ${pokemonDataList.length} Pokémon in the database.`);
     res.json({
       message: `Stored ${pokemonDataList.length} Pokémon in the database.`,

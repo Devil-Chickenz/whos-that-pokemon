@@ -48,11 +48,13 @@ userController.loginUser = async (req, res, next) => {
     if (existingUser) {
       const result = await bcrypt.compare(password, existingUser.password);
       if (result) {
+        res.locals.id = existingUser._id;
         res.locals.existingUser = {
           verified: true,
           username: existingUser.username,
           highScore: existingUser.highScore,
         };
+
         return next();
       } else {
         return next({
