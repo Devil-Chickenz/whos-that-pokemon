@@ -9,7 +9,7 @@ const uri = mongoString;
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connection.once('open', () => {
-  console.log('Connected to Database');
+  console.log('Connected to Session Database');
 });
 
 const Schema = mongoose.Schema;

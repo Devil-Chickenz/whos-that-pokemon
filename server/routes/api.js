@@ -17,7 +17,7 @@ router.get('/', pokemonController.getPokemon, (req, res) => {
 // Route to handle user registration using the createUser middleware from userController.
 // Returns a JSON response indicating that the user has been added to the database.
 router.post('/signup', userController.createUser, (req, res) => {
-  return res.status(200).json('Added user to the db');
+  return res.status(200).json(res.locals.newUser);
 });
 
 // Route to handle user login using the loginUser middleware from userController.

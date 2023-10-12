@@ -70,7 +70,7 @@ const Login = ({ currentUser, setCurrentUser }) => {
           </div>
 
           <div id='signup' className='signup-form'>
-            <h1>Signup</h1>
+            <h1>Sign Up</h1>
             <form onSubmit={handleSignup}>
               <input name='username' type='text' placeholder='Username'></input>
               <input
@@ -78,7 +78,7 @@ const Login = ({ currentUser, setCurrentUser }) => {
                 type='password'
                 placeholder='Password'
               ></input>
-              <input className='submit' type='submit' value='Signup'></input>
+              <input className='submit' type='submit' value='Sign Up'></input>
             </form>
           </div>
         </div>

@@ -34,6 +34,12 @@ export const gameSlice = createSlice({
   },
 });
 
-export const { setScore, setHardmode, setPokemon, setLives, setGenChoice } =
-  gameSlice.actions;
+export const {
+  setScore,
+  setHardmode,
+  setPokemon,
+  setLives,
+  setGenChoice,
+  setResult,
+} = gameSlice.actions;
 export default gameSlice.reducer;

@@ -3,11 +3,12 @@ import MainContainer from '../containers/MainContainer.jsx';
 import LeftSideContainer from '../containers/LeftSideContainer.jsx';
 import RightSideContainer from '../containers/RightSideContainer.jsx';
 
+import { setScore } from '../redux/gameSlice';
+
 // props coming from App.js
 const Play = ({
   currentUser,
   score,
-  setScore,
   hardmode,
   setHardmode,
   pokemon,

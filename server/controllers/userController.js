@@ -24,7 +24,15 @@ userController.createUser = async (req, res, next) => {
     } else {
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(password, salt);
-      await User.create({ username: username, password: hashedPassword });
+      const newUser = await User.create({
+        username: username,
+        password: hashedPassword,
+      });
+      res.locals.newUser = {
+        verified: true,
+        username: newUser.username,
+        highScore: 0,
+      };
       console.log('User created');
       return next();
     }

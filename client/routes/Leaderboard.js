@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import LeaderContainer from '../containers/LeaderContainer.jsx';
+import { setScore, setLives, setResult } from '../redux/gameSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Leaderboard = () => {
   const score = useSelector((state) => state.game.score);
+  const currentScore = JSON.stringify(score);
   const currentUser = useSelector((state) => state.user);
   const [leadersList, setLeadersList] = useState([]);
 
@@ -46,12 +49,27 @@ const Leaderboard = () => {
     getDBScore();
   }, []);
 
+  // when routed to leaderboard, reset score lives, and result to initial state
+  const dispatch = useDispatch();
+  dispatch(setScore(0));
+  dispatch(setLives(3));
+  dispatch(setResult(''));
+
   return (
     <div className='leaderboard-main'>
-      <div className='user-high-score'>
-        <h3>Your High Score</h3>
-        <p>{currentUser.highScore}</p>
+      <div className='scores'>
+        <div className='user-current-score'>
+          <h3>Your Score</h3>
+          <h3 id='current-user-current-score'>{currentScore}</h3>
+        </div>
+        <div className='user-high-score'>
+          <h3>Your High Score</h3>
+          <h3 id='current-user-high-score'>{currentUser.highScore}</h3>
+        </div>
       </div>
+      <Link to='/play'>
+        <button className='play-again'>Play Again</button>
+      </Link>
       <div className='leaderboard'>
         <h3>Leaderboard</h3>
         <LeaderContainer leadersList={leadersList} />

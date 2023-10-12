@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
 
 body {
-  background-image: url('../client/images/background1.png');
+  background-image: url('../client/images/background2.jpg');
+  background-size: cover;
+}
+#root {
+  height: 100vh;
 }
 
 #app {
@@ -15,7 +19,7 @@ body {
 .signup-form {
   background-image: url('../client/images/login.png');
   padding: 30px;
-  border: 1px solid #ffcc00;
+  border: 2px solid #ffcc00;
   border-radius: 10px;
   text-align: center;
   max-width: 300px;
@@ -27,6 +31,7 @@ body {
 .signup-form h1 {
   font-size: 24px;
   color: #ff6600; /* Pokémon orange */
+  text-shadow: 1px 1px #fbf9f9;
 }
 
 input[type='text'],
@@ -103,6 +108,14 @@ input[type='submit']:hover {
   font-family: 'Shrikhand';
 }
 
+#result,
+#hint {
+  text-align: center;
+  font-family: 'Shrikhand';
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
 #LeftSideContainer {
   /* background-color: rgb(100, 243, 61); */
   display: flex;
@@ -110,12 +123,13 @@ input[type='submit']:hover {
   flex-basis: 20%;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .left-side-container {
   background-color: #ffcc00;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #ff9900;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: left;
@@ -128,7 +142,7 @@ input[type='submit']:hover {
 }
 
 .lives {
-  font-size: 36px;
+  font-size: 1.5em;
   font-family: 'Shrikhand';
   color: rgb(255, 98, 0);
 }
@@ -136,7 +150,7 @@ input[type='submit']:hover {
 .score,
 .score[data-testid='highscore'] {
   color: #333;
-  font-size: 36px;
+  font-size: 1.5em;
   font-family: 'Shrikhand';
 }
 
@@ -153,14 +167,16 @@ input[type='submit']:hover {
   justify-content: center;
   font-family: 'Shrikhand', cursive;
   gap: 20px;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .MainHeader {
-  color: #ffd93b;
+  color: #ffd12c;
   font-size: 64px;
   text-align: center;
   font-family: 'Shrikhand', cursive;
-  text-shadow: 5px 5px #558abb;
+  text-shadow: 5px 5px #355f86;
 }
 
 p {
@@ -173,31 +189,64 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 600px;
+  height: 100vh;
   width: 50%;
   background-image: url('../client/images/login.png');
   margin: 0 auto;
 }
+.scores {
+  margin: 5px;
+  display: flex;
+  flex-direction: row;
+  font-family: 'Shrikhand';
+  gap: 5px;
+  flex: 1 1 0;
+}
+.user-high-score,
+.user-current-score {
+  background-color: #ffd12c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 5px;
+}
+#current-user-high-score {
+  font-size: 50px;
+}
+#current-user-current-score {
+  font-size: 50px;
+}
+
+.play-again {
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: white;
+  background-color: #f86510;
+  font-family: 'Shrikhand';
+}
 
 .leaderboard {
-  background-color: #fff;
+  background-color: #f77c29;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  max-width: 300px;
-  margin: 20px 0;
+  max-width: auto;
   color: #333;
+  margin: 5px;
 }
 
 .leaderContainer {
   text-align: center;
-  background-color: #ff9900;
+  background-color: #ffd12c;
 }
 
 table {
   width: 100%;
+  border: 1px solid #ddd;
 }
 
 table th {
@@ -208,5 +257,4 @@ table th {
 
 table td {
   padding: 10px;
-  border-bottom: 1px solid #ddd;
 }

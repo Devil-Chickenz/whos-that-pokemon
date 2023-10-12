@@ -24,7 +24,7 @@ const UserInput = ({ getNewPokemon }) => {
 
     if (answer.toLowerCase() === pokemon.name) {
       const newScore = score + 1;
-      dispatch(setResult('Correct'));
+      dispatch(setResult(`Correct! The answer was ${pokemon.name}.`));
       // Increment the score and set it in the store
       dispatch(setScore(newScore));
       // check and set high score in state if needed
@@ -37,7 +37,7 @@ const UserInput = ({ getNewPokemon }) => {
       e.target.reset();
     } else {
       dispatch(setLives(lives - 1));
-      dispatch(setResult('Wrong, you got it wrong'));
+      dispatch(setResult(`Wrong! The answer was ${pokemon.name}.`));
       // get new pokemon and set in state
       getNewPokemon();
       e.target.reset();
